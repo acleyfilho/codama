@@ -1,2 +1,2 @@
 # codama
-CODAMA Tech is a group of awesome coder makers.
+CODAMA Tecnologia is a group of awesome code makers.
