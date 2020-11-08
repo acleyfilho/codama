@@ -1,13 +1,11 @@
-class Lanche{
+public abstract class Lanche{
   private int _id;
   private float _preco;
   private List<string> _complemento;
   private int _qtd;
   private int _tipoPao;
 
-  public Lanche(){
-
-  }
+  public Lanche(){}
 
   public Lanche(int id, float preco, List<string> complemento, int qtd, int tipoPao){
     this._id = id;
@@ -57,8 +55,6 @@ class Lanche{
     this._tipoPao = tipoPao;
   }
 
-  public AdicionarComplemento(){
-
-  }
+  public virtual void AdicionarComplemento(){}
 
 }
