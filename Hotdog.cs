@@ -1,18 +1,19 @@
-public class Hotdog : Lanche{
+using System.Collections.Generic;
+
+public class Hotdog : Item{
   private int _qtdSalsichas;
 
   public Hotdog(){}
 
-  public void Hotdog(int qtdSalsichas){
+  public Hotdog(int qtdSalsichas){
     this._qtdSalsichas = qtdSalsichas;
   }
 
-  public Hotdog(int id, float preco, List<string> complemento, int qtd, int tipoPao) : base(id, preco, complemento, qtd, tipoPao){
+  public Hotdog(int _id, float _preco, List<string> _complemento, int _qtd) : base(id, preco, complemento, qtd){
     this._id = id;
     this._preco = preco;
     this._complemento = complemento;
     this._qtd = qtd;
-    this._tipoPao = tipoPao;
   }
 
   public int getQtdSalsichas(){
