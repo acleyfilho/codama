@@ -1,18 +1,18 @@
-public abstract class Lanche{
+using System.Collections.Generic;
+
+public abstract class Item{
   private int _id;
   private float _preco;
   private List<string> _complemento;
   private int _qtd;
-  private int _tipoPao;
 
-  public Lanche(){}
+  public Item(){}
 
-  public Lanche(int id, float preco, List<string> complemento, int qtd, int tipoPao){
+  public Item(int id, float preco, List<string> complemento, int qtd){
     this._id = id;
     this._preco = preco;
     this._complemento = complemento;
     this._qtd = qtd;
-    this._tipoPao = tipoPao;
   }
 
   public int getId(){
@@ -27,7 +27,7 @@ public abstract class Lanche{
     return this._preco;
   }
 
-  public void setPreco(preco){
+  public void setPreco(float preco){
     this._preco = preco;
   }
 
@@ -35,7 +35,7 @@ public abstract class Lanche{
     return this._complemento;
   }
 
-  public void setComplemento(complemento){
+  public void setComplemento(List<string> complemento){
     this._complemento = complemento;
   }
 
@@ -43,16 +43,8 @@ public abstract class Lanche{
     return this._qtd;
   }
 
-  public void setQtd(qtd){
+  public void setQtd(int qtd){
     this._qtd = qtd;
-  }
-
-  public int getTipoPao(){
-    return this._tipoPao;
-  }
-
-  public void setTipoPao(tipoPao){
-    this._tipoPao = tipoPao;
   }
 
   public virtual void AdicionarComplemento(){}
