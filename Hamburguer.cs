@@ -1,4 +1,6 @@
-public class Hamburguer : Lanche{
+using System.Collections.Generic;
+
+public class Hamburguer : Item{
   private int _tipoCarne;
   private int _ponto;
 
@@ -9,19 +11,18 @@ public class Hamburguer : Lanche{
     this._ponto = ponto;
   }
 
-  public Hamburguer(int id, float preco, List<string> complemento, int qtd, int tipoPao) : base(id, preco, complemento, qtd, tipoPao){
-    this._id = id;
-    this._preco = preco;
-    this._complemento = complemento;
-    this._qtd = qtd;
-    this._tipoPao = tipoPao;
+  public Hamburguer(int id, float preco, List<string> complemento, int qtd) : base(id, preco, complemento, qtd){
+    this.id = id;
+    this.preco = preco;
+    this.complemento = complemento;
+    this.qtd = qtd;
   }
   
   public int getTipoCarne(){
-    return this._id;
+    return this._tipoCarne;
   }
 
-  public setTipoCarne(int tipoCarne){
+  public void setTipoCarne(int tipoCarne){
     this._tipoCarne = tipoCarne;
   }
 
