@@ -1,4 +1,4 @@
-using Systemusing System;
+using System;
 
 class MainClass
 {
@@ -27,24 +27,37 @@ class MainClass
 
             if (tipoItem == 1)
             {
-                Item burguer = new Hamburguer();
+                Hamburguer burguer = new Hamburguer();
                 
                 System.Console.WriteLine("1 - Blend clássico americano");
                 System.Console.WriteLine("2 -Blend clássico americano");
                 System.Console.WriteLine("2 - Blend com carne de sol");
 
                 System.Console.Write("Escolha a opção de carne: Opções [ 1 - 2 - 3 ] ");
-                string tipoCarne = Console.ReadLine();
+                int tipoCarne = int.Parse(Console.ReadLine());
 
 
+                
+                if(tipoCarne == 1 || tipoCarne == 2 || tipoCarne == 3){
+
+                  burguer.setTipoCarne(tipoCarne);
+
+                }
 
                 System.Console.WriteLine("1 - Carne mal passada");
                 System.Console.WriteLine("2 - Carne ao ponto");
                 System.Console.WriteLine("2 - Carne bem passada");
 
                 System.Console.Write("Escolha o ponto da carne: Opções [ 1 - 2 - 3 ] ");
-                string tipoCarne = Console.ReadLine();
+                int tipoPonto = int.Parse(Console.ReadLine());
 
+
+                if(tipoPonto == 1 || tipoPonto == 2 || tipoPonto == 3){
+
+                  burguer.setPonto(tipoPonto);
+
+
+                }
 
             }
             else if (tipoItem == 2)
@@ -82,25 +95,4 @@ class MainClass
         }
 
     }
-};
-
-class MainClass {
-  public static void Main (string[] args) {
-    Console.WriteLine ("Primeiro teste \n");
-
-    int numero = 1;
-    int cpfCliente = 1627;
-    float valorTotal = 25;
-    string data = "04/11/2020";
-    bool status = true;
-    int qtdItens = 8;
-
-    atendente Atendente = new atendente();
-
-    Atendente.IniciarPedido(numero, cpfCliente, valorTotal, data, status, qtdItens);
-     
-     
-
-
-  }
 }
