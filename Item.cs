@@ -4,15 +4,18 @@ public abstract class Item{
   private int _id;
   private float _preco;
   private List<string> _complemento;
-  private int _qtd;
 
   public Item(){}
 
-  public Item(int id, float preco, List<string> complemento, int qtd){
+  public Item(int id, float preco){
+    this._id = id;
+    this._preco = preco;
+  }
+
+  public Item(int id, float preco, List<string> complemento){
     this._id = id;
     this._preco = preco;
     this._complemento = complemento;
-    this._qtd = qtd;
   }
 
   public int getId(){
@@ -23,7 +26,7 @@ public abstract class Item{
     this._id = id;
   }
 
-  public int getPreco(){
+  public float getPreco(){
     return this._preco;
   }
 
@@ -37,16 +40,7 @@ public abstract class Item{
 
   public void setComplemento(List<string> complemento){
     this._complemento = complemento;
+  
   }
-
-  public int getQtd(){
-    return this._qtd;
-  }
-
-  public void setQtd(int qtd){
-    this._qtd = qtd;
-  }
-
-  public virtual void AdicionarComplemento(){}
 
 }
