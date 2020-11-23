@@ -1,5 +1,60 @@
-class Pedido{
+class Pedidpublic class Pedido{
   private int _numero;
+  private string _nomeCliente;
+  private int _qtdItens;
+  private float _valorTotal;
+
+  public Pedido(){}
+
+  public Pedido(int numero, string nomeCliente, int qtdItens, float valorTotal){
+    this._numero = numero;
+    this._nomeCliente = nomeCliente;
+    this._qtdItens = qtdItens;
+    this._valorTotal = valorTotal;
+  }
+
+  public int getNumero(){
+    return this._numero;
+  }
+
+  public string getNomeCliente(){
+    return this._nomeCliente;
+  }
+
+  public int getQtdItens(){
+    return this._qtdItens;
+  }
+
+  public float getValorTotal(){
+    return this._valorTotal;
+  }
+
+  public void setNumero(int numero){
+    this._numero = numero;
+  }
+
+  public void setNomeCliente(string nomeCliente){
+    this._nomeCliente = nomeCliente;
+  }
+
+  public void setQtdItens(int qtdItens){
+    this._qtdItens = qtdItens;
+  }
+
+  public void setValorTotal(float valorTotal){
+    this._valorTotal = valorTotal;
+  }
+
+  public void SomarValorPedido(){
+
+    //sobrecarga de metodos e sobrecarga de operadores
+  }
+
+  public void AtualizarStatusPedido(){
+    //Não sabemos o que fazer por enquanto
+  }
+
+}private int _numero;
   private int _cpfCliente;
   private float _valorTotal;
   private string _data;
@@ -23,52 +78,60 @@ class Pedido{
   public int getNumero(){
     return this._numero;
   }
-  public int getCpfCliente(){
-    return this._cpfCliente;
+public class Pedido{
+  private int _numero;
+  private string _nomeCliente;
+  private int _qtdItens;
+  private float _valorTotal;
+
+  public Pedido(){}
+
+  public Pedido(int numero, string nomeCliente, int qtdItens, float valorTotal){
+    this._numero = numero;
+    this._nomeCliente = nomeCliente;
+    this._qtdItens = qtdItens;
+    this._valorTotal = valorTotal;
   }
 
-  public float  getValorTotal(){
-    return this._valorTotal;
-  }
-  public string getData(){
-    return this._data;
+  public int getNumero(){
+    return this._numero;
   }
 
-  public bool getStatus(){
-    return this._status;
+  public string getNomeCliente(){
+    return this._nomeCliente;
   }
-  public int  getQtsItens(){
+
+  public int getQtdItens(){
     return this._qtdItens;
+  }
+
+  public float getValorTotal(){
+    return this._valorTotal;
   }
 
   public void setNumero(int numero){
     this._numero = numero;
   }
 
-  public void setCpfCliente(int cpfCliente){
-    this._cpfCliente = cpfCliente;
-  }
-  public void setData(string data){
-    this._data = data;
-  }
-
-   public void setValorTotal(float valorTotal){
-    this._valorTotal = valorTotal;
-  }
-
-   public void setStatus(bool status){
-    this._status = status;
+  public void setNomeCliente(string nomeCliente){
+    this._nomeCliente = nomeCliente;
   }
 
   public void setQtdItens(int qtdItens){
     this._qtdItens = qtdItens;
   }
 
+  public void setValorTotal(float valorTotal){
+    this._valorTotal = valorTotal;
+  }
+
   public void SomarValorPedido(){
 
+    //sobrecarga de metodos e sobrecarga de operadores
   }
 
   public void AtualizarStatusPedido(){
-    
+    //Não sabemos o que fazer por enquanto
   }
+
 }
