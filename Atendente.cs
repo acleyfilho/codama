@@ -1,4 +1,42 @@
-using System;
+using Systemusing System;
+
+
+    class Atendente /*: IVerPedidos*/
+    {
+        private string _nomeAtendente;
+
+        public Atendente() { }
+
+        public Atendente(string nomeAtendente)
+        {
+            this._nomeAtendente = nomeAtendente;
+        }
+
+        public string getNome()
+        {
+            return this._nomeAtendente;
+        }
+
+        public void setNome(string nomeAtendente)
+        {
+            this._nomeAtendente = nomeAtendente;
+        }
+
+        public void IniciarPedido(int numero, string nome, int qtdItens, float valorTotal)
+        {
+            Pedido p = new Pedido(numero, nome, qtdItens, valorTotal);
+            // Console.Write("Nº Pedido: " + p.getNumero() + "\n Nome Cliente: " + p.getNomeCliente()
+            // + " \n Qtd. Itens: " + p.getQtdItens() + " \n Total (R$): " + p.getValorTotal() + "\n");
+
+
+            
+        }
+
+        public void FinalizarPedido() { }
+
+        public void EmitirRelatorioDia() { }
+    }
+;
 
 class Atendente{
 
