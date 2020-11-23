@@ -11,28 +11,26 @@ public class Hamburguer : Item{
     this._ponto = ponto;
   }
 
-  public Hamburguer(int id, float preco, List<string> complemento, int qtd) : base(id, preco, complemento, qtd){
-    this.id = id;
-    this.preco = preco;
-    this.complemento = complemento;
-    this.qtd = qtd;
+  public Hamburguer(int tipoCarne, int ponto, int id, float preco, List<string> complemento) 
+  : base(id, preco, complemento){
+    this._tipoCarne = tipoCarne;
+    this._ponto = ponto;
   }
   
   public int getTipoCarne(){
     return this._tipoCarne;
   }
 
-  public void setTipoCarne(int tipoCarne){
-    this._tipoCarne = tipoCarne;
-  }
-
   public int getPonto(){
     return this._ponto;
+  }
+
+  public void setTipoCarne(int tipoCarne){
+    this._tipoCarne = tipoCarne;
   }
 
   public void setPonto(int ponto){
     this._ponto = ponto;
   }
-  
-  public override void AdicionarComplemento(){}
+
 }
