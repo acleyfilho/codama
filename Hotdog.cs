@@ -9,11 +9,9 @@ public class Hotdog : Item{
     this._qtdSalsichas = qtdSalsichas;
   }
 
-  public Hotdog(int _id, float _preco, List<string> _complemento, int _qtd) : base(id, preco, complemento, qtd){
-    this._id = id;
-    this._preco = preco;
-    this._complemento = complemento;
-    this._qtd = qtd;
+  public Hotdog(int qtdSalsichas, int id, float preco, List<string> complemento) 
+  : base(id, preco, complemento){
+    this._qtdSalsichas = qtdSalsichas;
   }
 
   public int getQtdSalsichas(){
@@ -23,6 +21,5 @@ public class Hotdog : Item{
   public void setQtdSalsichas(int qtdSalsichas){
     this._qtdSalsichas = qtdSalsichas;
   }
-  
-  public override void AdicionarComplemento(){}
+
 }
