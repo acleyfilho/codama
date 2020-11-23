@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections.Geneusing System.Collections.Generic;
 
 public class Hamburguer : Item{
   private int _tipoCarne;
@@ -11,8 +11,8 @@ public class Hamburguer : Item{
     this._ponto = ponto;
   }
 
-  public Hamburguer(int tipoCarne, int ponto, int id, float preco, List<string> complemento) 
-  : base(id, preco, complemento){
+  public Hamburguer(int tipoCarne, int ponto, int id, float preco) 
+  : base(id, preco){
     this._tipoCarne = tipoCarne;
     this._ponto = ponto;
   }
