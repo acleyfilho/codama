@@ -1,36 +1,26 @@
-using System.Collections.Geneusing System.Collections.Generic;
+using System.Collections.Generic;
 
 public class Hamburguer : Item{
-  private int _tipoCarne;
-  private int _ponto;
+  private string _tipoCarne;
 
   public Hamburguer(){}
 
-  public Hamburguer(int tipoCarne, int ponto){
+  public Hamburguer(string tipoCarne){
     this._tipoCarne = tipoCarne;
-    this._ponto = ponto;
   }
 
-  public Hamburguer(int tipoCarne, int ponto, int id, float preco) 
-  : base(id, preco){
+  public Hamburguer(string tipoCarne, float preco) 
+  : base(preco){
     this._tipoCarne = tipoCarne;
-    this._ponto = ponto;
+    preco = 9.99f;
   }
   
-  public int getTipoCarne(){
+  public override string getTipoCarne(){
     return this._tipoCarne;
   }
 
-  public int getPonto(){
-    return this._ponto;
-  }
-
-  public void setTipoCarne(int tipoCarne){
+  public override void setTipoCarne(string tipoCarne){
     this._tipoCarne = tipoCarne;
-  }
-
-  public void setPonto(int ponto){
-    this._ponto = ponto;
   }
 
 }

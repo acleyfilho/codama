@@ -1,37 +1,41 @@
-using System.Collections.Geneusing System.Collections.Generic;
+using System.Collections.Generic;
 
-public abstract class Item{
-  private int _id;
-  private float _preco;
+public abstract class Item
+{
+    private string _idItem;
+    private float _preco;
 
+    public Item() { }
 
-  public Item(){}
+    public Item(float preco)
+    {
+        this._preco = preco;
+    }
 
-  public Item(int id, float preco){
-    this._id = id;
-    this._preco = preco;
-  }
+    public float getPreco()
+    {
+        return this._preco;
+    }
 
-  public Item(int id, float preco){
-    this._id = id;
-    this._preco = preco;
+    public void setPreco(float preco)
+    {
+        this._preco = preco;
+    }
 
-  }
+    public virtual string getTipoCarne()
+    {
+        return "";
+    }
 
-  public int getId(){
-    return this._id;
-  }
+    public virtual string getQtdSalsichas()
+    {
+        return "";
+    }
 
-  public void setId(int id){
-    this._id = id;
-  }
+    public virtual void setTipoCarne(string tipoCarne) { }
 
-  public float getPreco(){
-    return this._preco;
-  }
+    public virtual void setQtdSalsichas(string qtdSalsichas) { }
 
-  public void setPreco(float preco){
-    this._preco = preco;
-  }
+    public virtual void setTipoBebida(string tipoBebida) { }
 
 }

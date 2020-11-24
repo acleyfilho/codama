@@ -1,24 +1,25 @@
-using System.Collections.Geneusing System.Collections.Generic;
+using System.Collections.Generic;
 
 public class Hotdog : Item{
-  private int _qtdSalsichas;
+  private string _qtdSalsichas;
 
   public Hotdog(){}
 
-  public Hotdog(int qtdSalsichas){
+  public Hotdog(string qtdSalsichas){
     this._qtdSalsichas = qtdSalsichas;
   }
 
-  public Hotdog(int qtdSalsichas, int id, float preco ) 
-  : base(id, preco){
+  public Hotdog(string qtdSalsichas, float preco) 
+  : base(preco){
     this._qtdSalsichas = qtdSalsichas;
+    preco = 7.99f;
   }
 
-  public int getQtdSalsichas(){
+  public override string getQtdSalsichas(){
     return this._qtdSalsichas;
   }
 
-  public void setQtdSalsichas(int qtdSalsichas){
+  public override void setQtdSalsichas(string qtdSalsichas){
     this._qtdSalsichas = qtdSalsichas;
   }
 
