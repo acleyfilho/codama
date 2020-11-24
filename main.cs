@@ -42,7 +42,152 @@ class MainClass
                   burguer.setTipoCarne(tipoCarne);
                 }
 
-                System.Console.WriteLine("1 - Carne mal passada");
+                System.Console.WriteLine("1 - Carne mal passada");using System;
+using System.Collections.Generic;
+
+class MainClass
+{
+  public static void Main(string[] args)
+  {
+
+    bool iniciar = true;
+
+    while (iniciar == true)
+    {
+      System.Console.WriteLine("- Novo Pedido -");
+
+      Pedido p = new Pedido();
+
+      System.Console.Write("ID do pedido: ");
+      int id = int.Parse(Console.ReadLine());
+      p.setId(id);
+
+      System.Console.Write("Nome do cliente: ");
+      string nomeCliente = Console.ReadLine();
+      p.setNomeCliente(nomeCliente);
+
+      System.Console.WriteLine("1 - Hambúrguer");
+      System.Console.WriteLine("2 - Hotdog");
+
+      System.Console.Write("Tipo de item: ");
+      int tipoItem = int.Parse(Console.ReadLine());
+    
+      if (tipoItem == 1)
+      {
+
+        System.Console.WriteLine("1 - Blend clássico americano");
+        System.Console.WriteLine("2 - Blend com carne de sol");
+
+        System.Console.Write("Escolha a opção de carne - Opções [ 1 - 2 ]: ");
+        int carne = int.Parse(Console.ReadLine());
+        string tipoCarne = "";
+
+        if (carne == 1){
+          tipoCarne = "Blend clássico americano";
+        }
+        else if (carne == 2){
+          tipoCarne = "Blend com carne de sol";
+        }
+
+        Hamburguer burguer = new Hamburguer(tipoCarne);
+        List<string> listaItens = new List<string>();
+        listaItens.Add("Hambúrguer " + burguer.getTipoCarne());
+
+        System.Console.WriteLine("Deseja bebida? - Opções [ s / n ]: ");
+        char opcaoBebida = char.Parse(Console.ReadLine());
+        
+        if (opcaoBebida == 's')
+        {
+          System.Console.WriteLine("1 - Refrigerante");
+          System.Console.WriteLine("2 - Suco");
+
+          System.Console.Write("Escolha a bebida - Opções [ 1 - 2 ]: ");
+          int bebida = int.Parse(Console.ReadLine());
+          string tipoBebida = "";
+
+          if (bebida == 1){
+            tipoBebida = "Refrigerante";
+          }
+          else if (bebida == 2){
+            tipoBebida = "Suco";
+          }
+
+          Bebida bebi = new Bebida();
+          bebi.setTipoBebida(tipoBebida);
+
+          listaItens.Add("Bebida: " + bebi.getTipoBebida());
+        }
+          
+
+        p.GravarPedido(listaItens, id);
+
+      }
+        if (tipoItem == 2)
+        {
+          System.Console.Write("Quantidade de salsichas - Opções [ 1 - 2 ]: ");
+          int salsichas = int.Parse(Console.ReadLine());
+          string qtdSalsichas = "";
+          
+          if (salsichas == 1){
+            qtdSalsichas = "1 salsicha";
+          }
+          else if (salsichas == 2){
+            qtdSalsichas = "2 salsichas";
+          }
+
+          Hotdog dog = new Hotdog();
+          dog.setQtdSalsichas(qtdSalsichas);
+
+          List<string> lista = new List<string>();
+          lista.Add("Hotdog com " + dog.getQtdSalsichas());
+
+          System.Console.WriteLine("Deseja bebida? - Opções [ s / n ]: ");
+          char opcaoBebida = char.Parse(Console.ReadLine());
+
+        if (opcaoBebida == 's')
+        {
+          System.Console.WriteLine("1 - Refrigerante");
+          System.Console.WriteLine("2 - Suco");
+
+          System.Console.Write("Escolha a bebida - Opções [ 1 - 2 ]: ");
+          int bebida = int.Parse(Console.ReadLine());
+          string tipoBebida = "";
+
+          if (bebida == 1){
+            tipoBebida = "Refrigerante";
+          }
+          else if (bebida == 2){
+            tipoBebida = "Suco";
+          }
+
+          Bebida bebi = new Bebida();
+          bebi.setTipoBebida(tipoBebida);
+
+          lista.Add("Bebida: " + bebi.getTipoBebida());
+        }
+
+        p.GravarPedido(lista, id);
+
+        }
+
+        System.Console.WriteLine("1 - Iniciar outro pedido");
+        System.Console.WriteLine("2 - Sair");
+        System.Console.Write("Opções [ 1 - 2 ]: ");
+        int opcao = int.Parse(Console.ReadLine());
+
+        if (opcao == 1)
+        {
+          iniciar = true;
+        }
+        else
+        {
+          iniciar = false;
+          System.Console.WriteLine("Sistema finalizado!");
+        }
+      }
+    }
+}
+
                 System.Console.WriteLine("2 - Carne ao ponto");
                 System.Console.WriteLine("2 - Carne bem passada");
 
