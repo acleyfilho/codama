@@ -90,7 +90,7 @@ public class Pedido{
 
   public void GravarPedido(List<string> i, int id)
   {
-    FileStream Arq1 = new FileStream("Pedido" + id + ".txt", FileMode.Create, FileAccess.Write);
+    FileStream Arq1 = new FileStream("Pedido_" + id + ".txt", FileMode.Create, FileAccess.Write);
     StreamWriter sw1 = new StreamWriter(Arq1, Encoding.UTF8);
 
     foreach (string lista in i)
