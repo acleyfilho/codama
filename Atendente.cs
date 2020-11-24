@@ -42,6 +42,36 @@ class Atendente{
 
   private string _nome;
   private string _senha;
+using System;
+
+
+    class Atendente /*: IVerPedidos*/
+    {
+        private string _nomeAtendente;
+
+        public Atendente() { }
+
+        public Atendente(string nomeAtendente)
+        {
+            this._nomeAtendente = nomeAtendente;
+        }
+
+        public string getNome()
+        {
+            return this._nomeAtendente;
+        }
+
+        public void setNome(string nomeAtendente)
+        {
+            this._nomeAtendente = nomeAtendente;
+        }
+
+        public void IniciarPedido() { }
+
+        public void FinalizarPedido() { }
+
+        public void EmitirRelatorioDia() { }
+    }
 
   public Atendente(){
 
