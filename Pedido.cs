@@ -42,7 +42,67 @@ class Pedidpublic class Pedido{
   }
 
   public void setValorTotal(float valorTotal){
+    this._valorTotal = valorTotal;using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+public class Pedido{
+  private int _id;
+  private string _nomeCliente;
+  private float _valorTotal;
+
+  public Pedido(){}
+
+  public Pedido(int id, string nomeCliente, float valorTotal){
+    this._id = id;
+    this._nomeCliente = nomeCliente;
     this._valorTotal = valorTotal;
+  }
+
+  public int getId(){
+    return this._id;
+  }
+
+  public string getNomeCliente(){
+    return this._nomeCliente;
+  }
+
+  public float getValorTotal(){
+    return this._valorTotal;
+  }
+
+  public void setId(int id){
+    this._id = id;
+  }
+
+  public void setNomeCliente(string nomeCliente){
+    this._nomeCliente = nomeCliente;
+  }
+
+  public void setValorTotal(float valorTotal){
+    this._valorTotal = valorTotal;
+  }
+
+  public void SomarValorPedido(){}
+
+  public void AtualizarStatusPedido(){}
+
+  public void GravarPedido(List<string> i, int id)
+  {
+    FileStream Arq1 = new FileStream("Pedido" + id + ".txt", FileMode.Create, FileAccess.Write);
+    StreamWriter sw1 = new StreamWriter(Arq1, Encoding.UTF8);
+
+    foreach (string lista in i)
+    {
+      sw1.WriteLine(lista);
+    }
+
+    sw1.Close();
+    Arq1.Close();
+  }
+
+}
   }
 
   public void SomarValorPedido(){
