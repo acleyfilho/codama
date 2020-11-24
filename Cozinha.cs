@@ -18,12 +18,5 @@ class Cozinha{
   }
 
 
-  public void PrepararPedido(){
 
-  }
-
-
-  public void EntregarPedido(){
-    
-  }
 }
