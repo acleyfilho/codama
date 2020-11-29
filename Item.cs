@@ -1,25 +1,48 @@
-using System.Collections.Generic;
-
 public abstract class Item
 {
     private string _idItem;
-    private float _preco;
+    private int _preco;
+
+    public static int operator+(Item i1, Item i2)
+    {
+        int soma;
+
+        soma = i1._preco + i2._preco;
+
+        return soma;
+    }
 
     public Item() { }
 
-    public Item(float preco)
+    public Item(string idItem, int preco)
     {
-        this._preco = preco;
+        _idItem = idItem;
+        _preco = preco;
+    }
+
+    public string getIdItem()
+    {
+        return _idItem;
+    }
+
+    public bool setIdItem(string idItem)
+    {
+        if (idItem == "1" || idItem == "2" || idItem == "3")
+        {
+            _idItem = idItem;
+            return true;
+        }
+        return false;
     }
 
     public float getPreco()
     {
-        return this._preco;
+        return _preco;
     }
 
-    public void setPreco(float preco)
+    public void setPreco(int preco)
     {
-        this._preco = preco;
+        _preco = preco;
     }
 
     public virtual string getTipoCarne()
@@ -28,6 +51,11 @@ public abstract class Item
     }
 
     public virtual string getQtdSalsichas()
+    {
+        return "";
+    }
+
+    public virtual string getTipoBebida()
     {
         return "";
     }
