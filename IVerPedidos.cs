@@ -1,5 +1,8 @@
-interface IVerPedidos{
-  private Lista<string> _pedidos;
-
-  public void VerListaPedidos(){}
+// Utilização de Interface
+interface IVerPedidos
+{
+  void VerPedidosEmPreparo();
+  void VerItensPedidosEmPreparo();
+  void VerPedidosEntregues();
+  
 }
