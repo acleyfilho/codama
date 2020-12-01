@@ -1,26 +1,36 @@
-using System.Collections.Generic;
-
-public class Hamburguer : Item{
+public class Hamburguer : Item
+{
+  // Atributo
   private string _tipoCarne;
 
-  public Hamburguer(){}
+  // Construtores
+  public Hamburguer() { }
 
-  public Hamburguer(string tipoCarne){
-    this._tipoCarne = tipoCarne;
+  public Hamburguer(string tipoCarne)
+  {
+    _tipoCarne = tipoCarne;
   }
 
-  public Hamburguer(string tipoCarne, float preco) 
-  : base(preco){
-    this._tipoCarne = tipoCarne;
-    preco = 9.99f;
+  public Hamburguer(string tipoCarne, string idItem, int preco) 
+  : base(idItem, preco)
+  {
+    _tipoCarne = tipoCarne;
   }
   
-  public override string getTipoCarne(){
-    return this._tipoCarne;
+  // Gets e sets
+  public override string getTipoCarne()
+  {
+    return _tipoCarne;
   }
 
-  public override void setTipoCarne(string tipoCarne){
-    this._tipoCarne = tipoCarne;
+  public override void setTipoCarne(string tipoCarne)
+  {
+    _tipoCarne = tipoCarne;
+  }
+
+  public override string ToString()
+  {
+    return "ID: " + getIdItem() + " | Item: Hambúrguer" + " | Carne: " + _tipoCarne + " | Preço: R$ " + getPreco();
   }
 
 }
