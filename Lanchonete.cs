@@ -318,51 +318,132 @@ class Lanchonete : IVerPedidos
         arq1.Close();
     }
 
-    public virtual void VerPedidosEmPreparo()
+    // Ver lista de pedidos em preparo
+    public void VerPedidosEmPreparo()
     {
         List<Pedido> pedidosEmPreparo = new List<Pedido>();
 
         string[] listaPedidos = File.ReadAllLines("PedidosEmPreparo.txt");
-        for (int i = 0; i < listaPedidos.Length; i++)
+        if (listaPedidos.Length != 0)
         {
-            Pedido pedido = new Pedido();
-            string[] aux = listaPedidos[i].Split('|');
-            pedido.setIdPedido(aux[0]);
-            pedido.setNomeCliente(aux[1]);
-            pedido.setValorTotal(Convert.ToInt32(aux[2]));
-            pedidosEmPreparo.Add(pedido);
-        }
+            for (int i = 0; i < listaPedidos.Length; i++)
+            {
+                Pedido pedido = new Pedido();
+                string[] aux = listaPedidos[i].Split('|');
+                pedido.setIdPedido(aux[0]);
+                pedido.setNomeCliente(aux[1]);
+                pedido.setValorTotal(Convert.ToInt32(aux[2]));
+                pedidosEmPreparo.Add(pedido);
+            }
 
-        Console.WriteLine("PEDIDOS EM PREPARO");
-        Console.WriteLine();
-        foreach (var list in pedidosEmPreparo)
+            Console.WriteLine("PEDIDOS EM PREPARO");
+            Console.WriteLine();
+            foreach (var pedido in pedidosEmPreparo)
+            {
+                Console.WriteLine(pedido.ToString());
+            }
+        }
+        else if (listaPedidos.Length == 0)
         {
-            Console.WriteLine(list.ToString());
+            Console.WriteLine("Ainda não há nenhum pedido em preparo!");
         }
 
     }
 
-    public virtual void VerPedidosEntregues()
+    // Ver itens dos pedidos em preparo
+    public void VerItensPedidosEmPreparo()
+    {
+        List<Pedido> pedidosEmPreparo = new List<Pedido>();
+
+        string[] listaPedidos = File.ReadAllLines("PedidosEmPreparo.txt");
+        if (listaPedidos.Length != 0)
+        {
+            for (int i = 0; i < listaPedidos.Length; i++)
+            {
+                Pedido pedido = new Pedido();
+                string[] aux = listaPedidos[i].Split('|');
+                pedido.setIdPedido(aux[0]);
+                pedido.setNomeCliente(aux[1]);
+                pedido.setValorTotal(Convert.ToInt32(aux[2]));
+                pedidosEmPreparo.Add(pedido);
+            }
+
+            Console.WriteLine("PEDIDOS EM PREPARO");
+            Console.WriteLine();
+            foreach (var pedido in pedidosEmPreparo)
+            {
+                Console.WriteLine(pedido.ToString());
+            }
+
+            Console.WriteLine();
+            Console.Write("> Digite o ID do pedido para ver os itens: ");
+            string idPedido = Console.ReadLine();
+
+            if (System.IO.File.Exists(@"PedidoId" + idPedido + ".txt"))
+            {
+                try
+                {
+                    // Lendo as linhas do pedido, que possuem os itens do mesmo
+                    string[] itens = System.IO.File.ReadAllLines("PedidoId" + idPedido + ".txt");
+
+                    Console.WriteLine();
+                    System.Console.WriteLine("ITENS DO PEDIDO " + idPedido);
+                    Console.WriteLine();
+
+                    foreach (var i in itens)
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Este pedido não está em preparo!");
+            }
+
+        }
+        else if (listaPedidos.Length == 0)
+        {
+            Console.WriteLine("Ainda não há nenhum pedido em preparo!");
+        }
+
+    }
+
+    // Ver lista de pedidos entregues
+    public void VerPedidosEntregues()
     {
         List<Pedido> pedidosEntregues = new List<Pedido>();
 
         string[] listaPedidos = File.ReadAllLines("PedidosEntregues.txt");
-        for (int i = 0; i < listaPedidos.Length; i++)
+        if (listaPedidos.Length != 0)
         {
-            Pedido pedido = new Pedido();
-            string[] aux = listaPedidos[i].Split('|');
-            pedido.setIdPedido(aux[0]);
-            pedido.setNomeCliente(aux[1]);
-            pedido.setValorTotal(Convert.ToInt32(aux[2]));
-            pedidosEntregues.Add(pedido);
+            for (int i = 0; i < listaPedidos.Length; i++)
+            {
+                Pedido pedido = new Pedido();
+                string[] aux = listaPedidos[i].Split('|');
+                pedido.setIdPedido(aux[0]);
+                pedido.setNomeCliente(aux[1]);
+                pedido.setValorTotal(Convert.ToInt32(aux[2]));
+                pedidosEntregues.Add(pedido);
+            }
+            Console.WriteLine("PEDIDOS ENTREGUES");
+            Console.WriteLine();
+            foreach (var pedido in pedidosEntregues)
+            {
+                Console.WriteLine(pedido.ToString());
+            }
+        }
+        else if (listaPedidos.Length == 0)
+        {
+            Console.WriteLine("Ainda não há nenhum pedido entregue!");
         }
 
-        Console.WriteLine("PEDIDOS ENTREGUES");
-        Console.WriteLine();
-        foreach (var list in pedidosEntregues)
-        {
-            Console.WriteLine(list.ToString());
-        }
     }
 
 }
