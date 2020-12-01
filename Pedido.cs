@@ -1,197 +1,165 @@
-class Pedidpublic class Pedido{
-  private int _numero;
-  private string _nomeCliente;
-  private int _qtdItens;
-  private float _valorTotal;
-
-  public Pedido(){}
-
-  public Pedido(int numero, string nomeCliente, int qtdItens, float valorTotal){
-    this._numero = numero;
-    this._nomeCliente = nomeCliente;
-    this._qtdItens = qtdItens;
-    this._valorTotal = valorTotal;
-  }
-
-  public int getNumero(){
-    return this._numero;
-  }
-
-  public string getNomeCliente(){
-    return this._nomeCliente;
-  }
-
-  public int getQtdItens(){
-    return this._qtdItens;
-  }
-
-  public float getValorTotal(){
-    return this._valorTotal;
-  }
-
-  public void setNumero(int numero){
-    this._numero = numero;
-  }
-
-  public void setNomeCliente(string nomeCliente){
-    this._nomeCliente = nomeCliente;
-  }
-
-  public void setQtdItens(int qtdItens){
-    this._qtdItens = qtdItens;
-  }
-
-  public void setValorTotal(float valorTotal){
-    this._valorTotal = valorTotal;using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Text;
 
-public class Pedido{
-  private int _id;
+public class Pedido
+{
+  // Atributos
+  private string _idPedido;
   private string _nomeCliente;
-  private float _valorTotal;
+  private int _valorTotal;
+  private List<Item> _itens;
 
-  public Pedido(){}
+  // Construtor
+  public Pedido() { }
 
-  public Pedido(int id, string nomeCliente, float valorTotal){
-    this._id = id;
-    this._nomeCliente = nomeCliente;
-    this._valorTotal = valorTotal;
-  }
-
-  public int getId(){
-    return this._id;
-  }
-
-  public string getNomeCliente(){
-    return this._nomeCliente;
-  }
-
-  public float getValorTotal(){
-    return this._valorTotal;
-  }
-
-  public void setId(int id){
-    this._id = id;
-  }
-
-  public void setNomeCliente(string nomeCliente){
-    this._nomeCliente = nomeCliente;
-  }
-
-  public void setValorTotal(float valorTotal){
-    this._valorTotal = valorTotal;
-  }
-
-  public void SomarValorPedido(){}
-
-  public void AtualizarStatusPedido(){}
-
-  public void GravarPedido(List<string> i, int id)
+  // Gets e sets
+  public string getIdPedido()
   {
-    FileStream Arq1 = new FileStream("Pedido_" + id + ".txt", FileMode.Create, FileAccess.Write);
-    StreamWriter sw1 = new StreamWriter(Arq1, Encoding.UTF8);
+    return _idPedido;
+  }
 
-    foreach (string lista in i)
+  public string getNomeCliente()
+  {
+    return _nomeCliente;
+  }
+
+  public int getValorTotal()
+  {
+    return _valorTotal;
+  }
+
+  public List<Item> getItens()
+  {
+    return _itens;
+  }
+
+  public void setIdPedido(string idPedido)
+  {
+    _idPedido = idPedido;
+  }
+
+  // Verificando se o ID do pedido é válido
+  public void VerificarIdPedido(string idPedido)
+  {
+    if (idPedido.Length != 2)
     {
-      sw1.WriteLine(lista);
+      throw new IdInvalido();
     }
 
-    sw1.Close();
-    Arq1.Close();
+    for (int i = 0; i < idPedido.Length; i++)
+    {
+      if(char.IsLetter(idPedido, i))
+      {
+        throw new IdInvalido();
+      }
+    }
+
+    List<string> id = new List<string>();
+
+    string[] listaId = File.ReadAllLines("ListaIdPedidos.txt");
+
+    for (int i = 0; i < listaId.Length; i++)
+    {
+      id.Add(listaId[i]);
+    }
+
+    if (!id.Contains(idPedido))
+    {
+      FileStream fs = new FileStream("ListaIdPedidos.txt", FileMode.Append, FileAccess.Write);
+      StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+
+      sw.WriteLine(idPedido);
+
+      sw.Close();
+      fs.Close();
+
+      setIdPedido(idPedido);
+               
+      }
+      else
+      {
+        throw new IdInvalido();
+      }
+    }
+
+  public void setNomeCliente(string nomeCliente)
+  {
+    _nomeCliente = nomeCliente;
+  }
+
+  public void VerificarNomeCliente(string nomeCliente)
+  {
+    if (nomeCliente.Length < 3)
+    {
+      throw new NomeInvalido();
+    }
+
+    for (int i = 0; i < nomeCliente.Length; i++)
+    {
+      if (char.IsNumber(nomeCliente, i))
+      {
+        throw new NomeInvalido();
+      }
+    }
+  }
+
+  public void setValorTotal(int valorTotal)
+  {
+    _valorTotal = valorTotal;
+  }
+
+  public void setItens(List<Item> itens)
+  {
+    _itens = itens;
+  }        
+
+  public override string ToString()
+  {
+    return getIdPedido() + "|" + getNomeCliente() + "|" + getValorTotal();
   }
 
 }
+
+[Serializable]
+internal class IdInvalido : Exception
+{
+  public IdInvalido()
+  {
   }
 
-  public void SomarValorPedido(){
-
-    //sobrecarga de metodos e sobrecarga de operadores
+  public IdInvalido(string message) : base(message)
+  {
   }
 
-  public void AtualizarStatusPedido(){
-    //Não sabemos o que fazer por enquanto
+  public IdInvalido(string message, Exception innerException) : base(message, innerException)
+  {
   }
 
-}private int _numero;
-  private int _cpfCliente;
-  private float _valorTotal;
-  private string _data;
-  private bool _status;
-  private int _qtdItens;
+  protected IdInvalido(SerializationInfo info, StreamingContext context) : base(info, context)
+  {
+  }
+}
 
-  public Pedido(){
-
+[Serializable]
+internal class NomeInvalido : Exception
+{
+  public NomeInvalido()
+  {
   }
 
-  public Pedido(int numero, int cpfCliente, float valorTotal, string data, bool status, int qtdItens){
-      this._numero = numero;
-      this._cpfCliente = cpfCliente;
-      this._valorTotal = valorTotal;
-      this._data = data;
-      this._status = status;
-      this._qtdItens = qtdItens;
-
+  public NomeInvalido(string message) : base(message)
+  {
   }
 
-  public int getNumero(){
-    return this._numero;
-  }
-public class Pedido{
-  private int _numero;
-  private string _nomeCliente;
-  private int _qtdItens;
-  private float _valorTotal;
-
-  public Pedido(){}
-
-  public Pedido(int numero, string nomeCliente, int qtdItens, float valorTotal){
-    this._numero = numero;
-    this._nomeCliente = nomeCliente;
-    this._qtdItens = qtdItens;
-    this._valorTotal = valorTotal;
+  public NomeInvalido(string message, Exception innerException) : base(message, innerException)
+  {
   }
 
-  public int getNumero(){
-    return this._numero;
+  protected NomeInvalido(SerializationInfo info, StreamingContext context) : base(info, context)
+  {
   }
-
-  public string getNomeCliente(){
-    return this._nomeCliente;
-  }
-
-  public int getQtdItens(){
-    return this._qtdItens;
-  }
-
-  public float getValorTotal(){
-    return this._valorTotal;
-  }
-
-  public void setNumero(int numero){
-    this._numero = numero;
-  }
-
-  public void setNomeCliente(string nomeCliente){
-    this._nomeCliente = nomeCliente;
-  }
-
-  public void setQtdItens(int qtdItens){
-    this._qtdItens = qtdItens;
-  }
-
-  public void setValorTotal(float valorTotal){
-    this._valorTotal = valorTotal;
-  }
-
-  public void SomarValorPedido(){
-
-    //sobrecarga de metodos e sobrecarga de operadores
-  }
-
-  public void AtualizarStatusPedido(){
-    //Não sabemos o que fazer por enquanto
-  }
-
+  
 }
