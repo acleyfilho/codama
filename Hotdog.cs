@@ -1,26 +1,36 @@
-using System.Collections.Generic;
-
-public class Hotdog : Item{
+public class Hotdog : Item
+{
+  // Atributo
   private string _qtdSalsichas;
 
-  public Hotdog(){}
+  // Construtores
+  public Hotdog() { }
 
-  public Hotdog(string qtdSalsichas){
-    this._qtdSalsichas = qtdSalsichas;
+  public Hotdog(string qtdSalsichas)
+  {
+    _qtdSalsichas = qtdSalsichas;
   }
 
-  public Hotdog(string qtdSalsichas, float preco) 
-  : base(preco){
-    this._qtdSalsichas = qtdSalsichas;
-    preco = 7.99f;
+  public Hotdog(string qtdSalsichas, string idItem, int preco) 
+  : base(idItem, preco)
+  {
+    _qtdSalsichas = qtdSalsichas;
   }
 
-  public override string getQtdSalsichas(){
-    return this._qtdSalsichas;
+  // Gets e sets
+  public override string getQtdSalsichas()
+  {
+    return _qtdSalsichas;
   }
 
-  public override void setQtdSalsichas(string qtdSalsichas){
-    this._qtdSalsichas = qtdSalsichas;
+  public override void setQtdSalsichas(string qtdSalsichas)
+  {
+    _qtdSalsichas = qtdSalsichas;
+  }
+
+  public override string ToString()
+  {
+    return "ID: " + getIdItem() + " | Item: Hot dog" + " | Salsichas: " + _qtdSalsichas + " | Preço: R$ " + getPreco();
   }
 
 }
