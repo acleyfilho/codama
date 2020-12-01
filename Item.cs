@@ -1,48 +1,6 @@
-public abstract class Item
-{
-    private string _idItem;
-    private int _preco;
-
-    public static int operator+(Item i1, Item i2)
-    {
-        int soma;
-
-        soma = i1._preco + i2._preco;
-
-        return soma;
-    }
-
-    public Item() { }
-
-    public Item(string idItem, int preco)
-    {
-        _idItem = idItem;
-        _preco = preco;
-    }
-
-    public string getIdItem()
-    {
-        return _idItem;
-    }
-
-    public bool setIdItem(string idItem)
-    {
-        if (idItem == "1" || idItem == "2" || idItem == "3")
-        {
-            _idItem = idItem;
-            return true;
-        }
-        return false;
-    }
-
-    public float getPreco()
-    {
-        return _preco;
-    }
-
-    public void setPreco(int preco)
-    {
-        _preco = preco;// Classe abstrata Item
+// Classe abstrata Item
+// Princípio da inversão de dependência : SOLID
+/*A utilização da classe abstrata Item nos permite ter flexibilidade,pois podemos criar novos itens diferentes quando necessário com facilidade. */
 public abstract class Item
 {
     // Atributos
@@ -90,30 +48,10 @@ public abstract class Item
     }
 
     // Métodos virtuais
-    public virtual string getTipoCarne()
-    {
-        return "";
-    }
-
-    public virtual string getQtdSalsichas()
-    {
-        return "";
-    }
-
-    public virtual string getTipoBebida()
-    {
-        return "";
-    }
-
-    public virtual void setTipoCarne(string tipoCarne) { }
-
-    public virtual void setQtdSalsichas(string qtdSalsichas) { }
-
-    public virtual void setTipoBebida(string tipoBebida) { }
-
-}
-    }
-
+    // Polimorfismo : GRASP
+    /* A utilização de métodos virtuais nos permite reaproveita-los e personaliza-los de acordo com a necessidade de cada classe onde esses serão utilizados
+    
+    */
     public virtual string getTipoCarne()
     {
         return "";
