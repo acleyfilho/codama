@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+/*
+Pure fabrication (fabricação/invenção pura): GRASP
+É uma classe que não representa nenhum conceito no domínio do problema, ela apenas funciona como uma classe prestadora de serviços, e é projetada para que possamos ter um baixo acoplamento e alta coesão no sistema.
+// Classe que representa
+*/
 class Lanchonete : IVerPedidos
 {
     // Atributo
